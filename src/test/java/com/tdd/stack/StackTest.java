@@ -9,65 +9,86 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 public class StackTest {
-    private Stack myStack;
+    private Stack<Integer> myIntegerStack;
 
     @Before
     public void setUp() throws Exception {
-        myStack = new Stack();
+        myIntegerStack = new Stack<>();
     }
 
     @Test
     public void shouldReturnSizeAsZeroOnEmptyStack() throws Exception {
-        assertThat(myStack.size(), is(0));
+        assertThat(myIntegerStack.size(), is(0));
     }
 
     @Test
     public void shouldPushOneItemAndCheckSize() throws Exception {
-        myStack.push(20);
-        assertThat(myStack.size(), is(1));
+        myIntegerStack.push(20);
+        assertThat(myIntegerStack.size(), is(1));
     }
 
     @Test
     public void shouldPopTheLastItemAndCheckSize() throws Exception {
-        myStack.push(10);
-        assertThat(myStack.pop(), is(10));
-        assertThat(myStack.size(), is(0));
+        myIntegerStack.push(10);
+        assertThat(myIntegerStack.pop(), is(10));
+        assertThat(myIntegerStack.size(), is(0));
     }
 
     @Test
     public void shouldReturnLastItemAndRetain() throws Exception {
-        myStack.push(10);
-        assertThat(myStack.peek(), is(10));
-        assertThat(myStack.size(), is(1));
+        myIntegerStack.push(10);
+        assertThat(myIntegerStack.peek(), is(10));
+        assertThat(myIntegerStack.size(), is(1));
     }
 
     @Test
     public void shouldReturnTrueOnEmptyStack() throws Exception {
-        assertTrue(myStack.isEmpty());
+        assertTrue(myIntegerStack.isEmpty());
     }
 
     @Test
     public void shouldReturnFalseOnNonEmptyStack() throws Exception {
-        myStack.push(30);
-        assertFalse(myStack.isEmpty());
+        myIntegerStack.push(30);
+        assertFalse(myIntegerStack.isEmpty());
     }
 
     @Test
-    public void shouldWorkForMultipleValues() throws Exception {
-        assertTrue(myStack.isEmpty());
+    public void shouldWorkForMultipleIntegerValues() throws Exception {
+        assertTrue(myIntegerStack.isEmpty());
 
-        myStack.push(10);
-        myStack.push(20);
-        myStack.push(30);
+        myIntegerStack.push(10);
+        myIntegerStack.push(20);
+        myIntegerStack.push(30);
 
-        assertThat(myStack.size(), is(3));
-        assertThat(myStack.peek(), is(30));
-        assertFalse(myStack.isEmpty());
+        assertThat(myIntegerStack.size(), is(3));
+        assertThat(myIntegerStack.peek(), is(30));
+        assertFalse(myIntegerStack.isEmpty());
 
-        myStack.pop();
+        myIntegerStack.pop();
 
-        assertThat(myStack.size(), is(2));
-        assertThat(myStack.peek(), is(20));
-        assertFalse(myStack.isEmpty());
+        assertThat(myIntegerStack.size(), is(2));
+        assertThat(myIntegerStack.peek(), is(20));
+        assertFalse(myIntegerStack.isEmpty());
+    }
+
+    @Test
+    public void shouldWorkForMultipleStringValues() throws Exception {
+        Stack<String> myStringStack = new Stack<>();
+
+        assertTrue(myStringStack.isEmpty());
+
+        myStringStack.push("Apple");
+        myStringStack.push("Banana");
+        myStringStack.push("Carrot");
+
+        assertThat(myStringStack.size(), is(3));
+        assertThat(myStringStack.peek(), is("Carrot"));
+        assertFalse(myStringStack.isEmpty());
+
+        myStringStack.pop();
+
+        assertThat(myStringStack.size(), is(2));
+        assertThat(myStringStack.peek(), is("Banana"));
+        assertFalse(myStringStack.isEmpty());
     }
 }

@@ -3,27 +3,27 @@ package com.tdd.stack;
 import java.util.ArrayList;
 import java.util.List;
 
-class Stack {
+class Stack<T> {
     private int head = 0;
-    private List<Integer> itemList = new ArrayList<>();
+    private List<T> itemList = new ArrayList<>();
 
     int size() {
         return head;
     }
 
-    void push(final Integer item) {
+    void push(final T item) {
         itemList.add(item);
         head++;
     }
 
-    int pop() {
-        Integer removedItem = itemList.get(head - 1);
+    T pop() {
+        T removedItem = itemList.get(head - 1);
         itemList.remove(head - 1);
         head--;
         return removedItem;
     }
 
-    int peek() {
+    T peek() {
         return itemList.get(head - 1);
     }
 
