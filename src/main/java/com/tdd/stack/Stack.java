@@ -4,27 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Stack<T> {
-    private int head = 0;
     private List<T> itemList = new ArrayList<>();
 
     int size() {
-        return head;
+        return itemList.size();
     }
 
     void push(final T item) {
         itemList.add(item);
-        head++;
     }
 
     T pop() {
-        T removedItem = itemList.get(head - 1);
-        itemList.remove(head - 1);
-        head--;
+        T removedItem = itemList.get(itemList.size() - 1);
+        itemList.remove(itemList.size() - 1);
         return removedItem;
     }
 
     T peek() {
-        return itemList.get(head - 1);
+        return itemList.get(itemList.size() - 1);
     }
 
     boolean isEmpty() {
